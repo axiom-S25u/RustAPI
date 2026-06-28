@@ -1110,11 +1110,6 @@ pub mod web {
             self
         }
 
-        pub fn method(self, method: &str) -> Self {
-            let c_method = CString::new(method).unwrap_or_default();
-            unsafe { ffi::geode_web_request_method(self.handle, c_method.as_ptr()) };
-            self
-        }
 
         pub fn timeout(self, seconds: i32) -> Self {
             unsafe { ffi::geode_web_request_timeout(self.handle, seconds) };

@@ -5,7 +5,7 @@ edition = "2021"
 
 [lib]
 name = "rustapi"
-crate-type = ["staticlib"]
+crate-type = ["rlib", "staticlib"]
 
 [dependencies]
 libc = "0.2"

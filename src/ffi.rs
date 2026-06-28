@@ -258,7 +258,7 @@ extern "C" {
     pub fn geode_web_request_free(handle: *mut c_void);
     pub fn geode_web_request_header(handle: *mut c_void, name: *const c_char, value: *const c_char);
     pub fn geode_web_request_param(handle: *mut c_void, name: *const c_char, value: *const c_char);
-    pub fn geode_web_request_method(handle: *mut c_void, method: *const c_char);
+
     pub fn geode_web_request_timeout(handle: *mut c_void, seconds: i32);
     pub fn geode_web_request_body_string(handle: *mut c_void, data: *const c_char);
     pub fn geode_web_request_body_json(handle: *mut c_void, json: *const c_char);

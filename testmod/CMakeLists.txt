@@ -33,8 +33,8 @@ if (APPLE)
     else()
         add_custom_command(
             OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libtestmod.a
-            COMMAND cargo build --release --target aarch64-apple-darwin
-            COMMAND cargo build --release --target x86_64-apple-darwin
+            COMMAND ${CMAKE_COMMAND} -E env MACOSX_DEPLOYMENT_TARGET=11.0 cargo build --release --target aarch64-apple-darwin
+            COMMAND ${CMAKE_COMMAND} -E env MACOSX_DEPLOYMENT_TARGET=11.0 cargo build --release --target x86_64-apple-darwin
             COMMAND lipo -create -output ${CMAKE_CURRENT_BINARY_DIR}/libtestmod.a
                 ${CMAKE_CURRENT_SOURCE_DIR}/target/aarch64-apple-darwin/release/libtestmod.a
                 ${CMAKE_CURRENT_SOURCE_DIR}/target/x86_64-apple-darwin/release/libtestmod.a
@@ -101,4 +101,8 @@ if(WIN32)
     target_link_options(${PROJECT_NAME} PRIVATE
         $<$<NOT:$<CONFIG:Debug>>:LINKER:/OPT:REF>
         $<$<NOT:$<CONFIG:Debug>>:LINKER:/OPT:ICF>)
+endif()
+
+if(APPLE)
+    target_link_libraries(${PROJECT_NAME} "-framework Security")
 endif()

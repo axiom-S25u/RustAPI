@@ -8,3 +8,4 @@ name = "testmod"
 crate-type = ["staticlib"]
 
 [dependencies]
+rustapi = { path = ".." }

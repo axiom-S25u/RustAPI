@@ -2,7 +2,7 @@
 mod ffi;
 mod runtime;
 #[cfg(not(test))]
-mod bindings;
+pub mod bindings;
 #[cfg(test)]
 mod tests;
 
